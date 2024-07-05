@@ -9,6 +9,15 @@
     @vite('resources/css/app.css')
 </head>
 <body>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+            <script>
+                alert('{{ $error }}');
+            </script>
+            @endforeach
+        </div>
+    @endif
     @if (session()->has('success'))
         <script>
             alert( '{{ session()->get('success') }}' );

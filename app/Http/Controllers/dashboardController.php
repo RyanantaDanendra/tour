@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Packages;
 use App\Models\Images;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Storage;
 
 class dashboardController extends Controller
@@ -13,9 +14,11 @@ class dashboardController extends Controller
     public function index() {
         $user = User::count();
         $packages = Packages::count();
+        $gallery = Gallery::count();
         return view('dashboard/home', [
             'user' => $user,
             'packages' => $packages,
+            'gallery' => $gallery,
         ]);
     }
 

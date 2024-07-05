@@ -25,17 +25,21 @@
     <div id="latest" class="w-full min-h-screen py-10">
         <h1 class="text-center text-3xl font-bold">Our Latest Packages</h1>
         <div class="packages flex flex-wrap justify-center py-6 gap-10">
-            @foreach ($packages as $package)
-                <div class="package w-80 h-96 bg-white shadow-md shadow-black border-b-8 border-b-sky-500 overflow-hidden">
-                    <div class="image w-full h-40 bg-cover bg-center bg-no-repeat hover:scale-105 duration-300 ease-out overflow-hidden" style="background-image: url(/storage/{{ $package->images[0]->image }})"></div>
-                    <div class="text px-5 py-3">
-                        <h1 class="text-xl font-semibold">{{ $package['name'] }}</h1>
-                        <h3 class="pt-5">{{ $package['destination'] }}</h3>
-                        <h3>{{ $package['duration'] }}</h3>
-                        <a href="{{ route('detail', $package->slug) }}" class="text-sky-400 hover:underline flex items-center gap-5 mt-10 justify-end">View Details <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a>
+            @if ($packages->count() > 0)                
+                @foreach ($packages as $package)
+                    <div class="package w-80 h-96 bg-white shadow-md shadow-black border-b-8 border-b-sky-500 overflow-hidden">
+                        <div class="image w-full h-40 bg-cover bg-center bg-no-repeat hover:scale-105 duration-300 ease-out overflow-hidden" style="background-image: url(/storage/{{ $package->images[0]->image }})"></div>
+                        <div class="text px-5 py-3">
+                            <h1 class="text-xl font-semibold">{{ $package['name'] }}</h1>
+                            <h3 class="pt-5">{{ $package['destination'] }}</h3>
+                            <h3>{{ $package['duration'] }}</h3>
+                            <a href="{{ route('detail', $package->slug) }}" class="text-sky-400 hover:underline flex items-center gap-5 mt-10 justify-end">View Details <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @else
+                    <p class="mt-12">No Package Yet!</p>
+            @endif
         </div>
     </div>
 

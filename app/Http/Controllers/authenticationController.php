@@ -53,6 +53,10 @@ class authenticationController extends Controller
                 return redirect('/')->with('success', 'Successfully Loged-in');
             }  
         }
+
+        return redirect()->back()->withErrors([
+            'email' => 'These credentials doesnt match our record.',
+        ]);
     }
 
     public function logout(Request $request) {
